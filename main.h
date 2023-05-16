@@ -97,6 +97,11 @@ typedef struct builtin_s
 /* hsh_lists.c */
 sepa_list *add_sepa_node_end(sepa_list **head, char sepa);
 void free_sep_list(sepa_list *head);
+line_list *add_line_end(line_list **head, char *line);
+void free_line_list(line_list *head);
 
+/* hsh_lists2.c */
+r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
+void free_rvar_list(r_var *head);
 
 #endif
