@@ -17,19 +17,19 @@
 #define TOK_DELIM " \t\r\n\a"
 
 
-/* Points to an array of pointers to strings called the "environment" */
+/* It Points to an array of pointers to strings called the "environment" */
 extern char **environ;
 
 
 /**
- * struct data - struct that contains all relevant data on runtime
+ * struct data - the struct that contains all relevant data on runtime
  * @av: argument vector
- * @input: command line written by the user
- * @args: tokens of the command line
- * @status: last status of the shell
- * @counter: lines counter
- * @_environ: environment variable
- * @pid: process ID of the shell
+ * @input: the command line written by the user
+ * @args: the tokens of the command line
+ * @status: the last status of the shell
+ * @counter: the lines counter
+ * @_environ: the environment variable
+ * @pid: the process ID of the shell
  */
 typedef struct data
 {
@@ -43,10 +43,10 @@ typedef struct data
 } data_shell;
 
 /**
- * struct sepa_list_s - single linked list
+ * struct sepa_list_s - the single linked list
  * @separator: ; | &
  * @next: next node
- * Description: single linked list to store separators
+ * Description: the single linked list to store separators
  */
 typedef struct sepa_list_s
 {
@@ -67,12 +67,24 @@ typedef struct line_list_s
 } line_list;
 
 /**
- * struct r_var_list - single linked list
- * @len_var: length of the variable
- * @val: value of the variable
- * @len_val: length of the value
- * @next: next node
- * Description: single linked list to store variables
+ * struct builtin_s - the Builtin struct for command args.
+ * @name:  name of the command builtin i.e cd, exit, env
+ * @f: the data type pointer function.
+ */
+typedef struct builtin_s
+{
+	char *name;
+	int (*f)(data_shell *datash);
+} builtin_t;
+
+
+/**
+ * struct r_var_list - it is a single linked list
+ * @len_var: length of variable
+ * @val: value of variable
+ * @len_val: length of value
+ * @next: the next node
+ * Description: the single linked list to store variables
  */
 typedef struct r_var_list
 {
@@ -82,21 +94,10 @@ typedef struct r_var_list
 	struct r_var_list *next;
 } r_var;
 
-/**
- * struct builtin_s - Builtin struct for command args.
- * @name: The name of the command builtin i.e cd, exit, env
- * @f: data type pointer function.
- */
-typedef struct builtin_s
-{
-	char *name;
-	int (*f)(data_shell *datash);
-} builtin_t;
 
-
-/* hsh_lists.c */
+/* hsh_lists.c  */
 sepa_list *add_sepa_node_end(sepa_list **head, char sepa);
-void free_sep_list(sepa_list *head);
+void free_sepa_list(sepa_list *head);
 line_list *add_line_end(line_list **head, char *line);
 void free_line_list(line_list *head);
 

@@ -4,32 +4,32 @@
  * add_sepa_node_end - add a separator  at the end
  * of a sepa_list.
  * @head: head of the linked list.
- * @sep: separator found (; | &).
+ * @sepa: separator found (; | &).
  * Return: address of the head.
  */
 
 sepa_list *add_sepa_node_end(sepa_list **head, char sepa)
 {
-    sepa_list *new = malloc(sizeof(sepa_list));
-    if (new == NULL)
-        return NULL;
+sepa_list *new = malloc(sizeof(sepa_list));
+if (new == NULL)
+return (NULL);
 
-    new->separator = sepa;
-    new->next = NULL;
+new->separator = sepa;
+new->next = NULL;
 
-    if (*head == NULL)
-    {
-        *head = new;
-    }
-    else
-    {
-        sepa_list *current = *head;
-        while (current->next != NULL)
-            current = current->next;
-        current->next = new;
-    }
+if (*head == NULL)
+{
+*head = new;
+}
+else
+{
+sepa_list *current = *head;
+while (current->next != NULL)
+current = current->next;
+current->next = new;
+}
 
-    return *head;
+return (*head);
 }
 
 /**
@@ -37,15 +37,15 @@ sepa_list *add_sepa_node_end(sepa_list **head, char sepa)
  * @head: head of the linked list.
  * Return: no return.
  */
-void free_sep_list(sepa_list *head)
+void free_sepa_list(sepa_list *head)
 {
-    sepa_list *current = head;
-    while (current != NULL)
-    {
-        sepa_list *next = current->next;
-        free(current);
-        current = next;
-    }
+sepa_list *current = head;
+while (current != NULL)
+{
+sepa_list *next = current->next;
+free(current);
+current = next;
+}
 }
 
 
@@ -59,26 +59,26 @@ void free_sep_list(sepa_list *head)
 
 line_list *add_line_node_end(line_list **head, char *line)
 {
-    line_list *new = malloc(sizeof(line_list));
-    if (new == NULL)
-        return NULL;
+line_list *new = malloc(sizeof(line_list));
+if (new == NULL)
+return (NULL);
 
-    new->line = line;
-    new->next = NULL;
+new->line = line;
+new->next = NULL;
 
-    if (*head == NULL)
-    {
-        *head = new;
-    }
-    else
-    {
-        line_list *current = *head;
-        while (current->next != NULL)
-            current = current->next;
-        current->next = new;
-    }
+if (*head == NULL)
+{
+*head = new;
+}
+else
+{
+line_list *current = *head;
+while (current->next != NULL)
+current = current->next;
+current->next = new;
+}
 
-    return *head;
+return (*head);
 }
 
 /**
@@ -89,12 +89,12 @@ line_list *add_line_node_end(line_list **head, char *line)
 
 void free_line_list(line_list *head)
 {
-    line_list *current = head;
-    while (current != NULL)
-    {
-        line_list *next = current->next;
-        free(current->line);
-        free(current);
-        current = next;
-    }
+line_list *current = head;
+while (current != NULL)
+{
+line_list *next = current->next;
+free(current->line);
+free(current);
+current = next;
+}
 }
