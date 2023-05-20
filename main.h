@@ -103,7 +103,7 @@ void free_line_list(line_list **head);
 
 /* hsh_lists2.c */
 r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
-void free_rvar_list(r_var *head);
+void free_rvar_list(r_var **head);
 
 /* memory.c */
 void _memcpy(void *newptr, const void *ptr, unsigned int size);

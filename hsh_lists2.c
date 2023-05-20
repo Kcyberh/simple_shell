@@ -42,7 +42,7 @@ return (*head);
  * Return: it returns nothing
  */
 
-void free_rvar_list(r_var *head)
+void free_rvar_list(r_var **head)
 {
 r_var *current = head;
 while (current != NULL)
