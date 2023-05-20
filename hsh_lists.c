@@ -37,7 +37,7 @@ return (*head);
  * @head: head of the linked list.
  * Return: no return.
  */
-void free_sepa_list(sepa_list *head)
+void free_sepa_list(sepa_list **head)
 {
 sepa_list *current = head;
 while (current != NULL)
@@ -87,7 +87,7 @@ return (*head);
  * Return: no return.
  */
 
-void free_line_list(line_list *head)
+void free_line_list(line_list **head)
 {
 line_list *current = head;
 while (current != NULL)

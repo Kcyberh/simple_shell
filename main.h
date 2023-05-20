@@ -97,9 +97,9 @@ typedef struct r_var_list
 
 /* hsh_lists.c  */
 sepa_list *add_sepa_node_end(sepa_list **head, char sepa);
-void free_sepa_list(sepa_list *head);
+void free_sepa_list(sepa_list **head);
 line_list *add_line_end(line_list **head, char *line);
-void free_line_list(line_list *head);
+void free_line_list(line_list **head);
 
 /* hsh_lists2.c */
 r_var *add_rvar_node(r_var **head, int lvar, char *var, int lval);
@@ -132,4 +132,32 @@ int _strspn(char *s, char *accept);
 
 /* hsh_str3.c */
 void rev_string(char *s);
+
+/* hsh_str2.c */
+char *_strdup(const char *s);
+int _strlen(const char *s);
+int cmp_chars(char str[], const char *delim);
+char *_strtok(char str[], const char *delim);
+int _isdigit(const char *s);
+
+/* check_error.c */
+int repeated_char(char *input, int i);
+int error_sep_op(char *input, int i, char last);
+int first_char(char *input, int *i);
+void print_syntax_error(data_shell *datash, char *input, int i, int bool);
+int check_syntax_error(data_shell *datash, char *input);
+
+/* split.c */
+char *swap_char(char *input, int bool);
+void add_nodes(sepa_list **head_s, line_list **head_l, char *input);
+void go_next(sepa_list **list_s, line_list **list_l, data_shell *datash);
+int split_commands(data_shell *datash, char *input);
+char **split_line(char *input);
+
+/* var.c */
+void check_env(r_var **h, char *in, data_shell *data);
+int check_vars(r_var **h, char *in, char *st, data_shell *data);
+char *replaced_input(r_var **head, char *input, char *new_input, int nlen);
+char *rep_var(char *input, data_shell *datash);
+
 #endif
