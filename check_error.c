@@ -151,7 +151,7 @@ void print_syntax_error(data_shell *datash, char *input, int i, int bool)
  * @input: the input string
  * Return: Always return 1 if there is an error. 0 in other case
  */
-
+int check_syntax_error(data_shell *datash, char *input)
 {
 	int begin = 0;
 	int f_char = 0;
