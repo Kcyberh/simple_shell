@@ -4,9 +4,8 @@
  * swap_char - it swaps | and & for non-printed chars
  * @input: the input string
  * @bool: the type of swap
- * Return: always returns swapped string
+ * Return: the swapped string
  */
-
 char *swap_char(char *input, int bool)
 {
 	int x;
@@ -50,8 +49,7 @@ char *swap_char(char *input, int bool)
  * @input: the input string
  * Return: it returns nothing
  */
-
-void add_nodes(sepa_list **head_s, line_list **head_l, char *input)
+void add_nodes(sep_list **head_s, line_list **head_l, char *input)
 {
 	int x;
 	char *line;
@@ -61,11 +59,11 @@ void add_nodes(sepa_list **head_s, line_list **head_l, char *input)
 	for (x = 0; input[x]; x++)
 	{
 		if (input[x] == ';')
-			add_sepa_node_end(head_s, input[x]);
+			add_sep_node_end(head_s, input[x]);
 
 		if (input[x] == '|' || input[x] == '&')
 		{
-			add_sepa_node_end(head_s, input[x]);
+			add_sep_node_end(head_s, input[x]);
 			x++;
 		}
 	}
@@ -79,19 +77,17 @@ void add_nodes(sepa_list **head_s, line_list **head_l, char *input)
 
 }
 
-
 /**
  * go_next - it go to the next command line stored
  * @list_s: the separator list
  * @list_l: the command line list
  * @datash: the data structure
- * Return: it  return nothing
+ * Return: it returns nothing
  */
-
-void go_next(sepa_list **list_s, line_list **list_l, data_shell *datash)
+void go_next(sep_list **list_s, line_list **list_l, data_shell *datash)
 {
 	int loop_sep;
-	sepa_list *ls_s;
+	sep_list *ls_s;
 	line_list *ls_l;
 
 	loop_sep = 1;
@@ -127,13 +123,12 @@ void go_next(sepa_list **list_s, line_list **list_l, data_shell *datash)
  * the separators ;, | and &, and executes them
  * @datash: the data structure
  * @input: the input string
- * Return: Always return 0 to exit, 1 to continue
+ * Return: it returns 0 to exit, 1 to continue
  */
-
 int split_commands(data_shell *datash, char *input)
 {
 
-	sepa_list *head_s, *list_s;
+	sep_list *head_s, *list_s;
 	line_list *head_l, *list_l;
 	int loop;
 
@@ -161,7 +156,7 @@ int split_commands(data_shell *datash, char *input)
 			list_l = list_l->next;
 	}
 
-	free_sepa_list(&head_s);
+	free_sep_list(&head_s);
 	free_line_list(&head_l);
 
 	if (loop == 0)
@@ -172,9 +167,8 @@ int split_commands(data_shell *datash, char *input)
 /**
  * split_line - it tokenizes the input string
  * @input: the input string.
- * Return: Always return string splitted.
+ * Return: it returns string splitted.
  */
-
 char **split_line(char *input)
 {
 	size_t bsize;

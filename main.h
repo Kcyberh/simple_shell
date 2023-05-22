@@ -43,7 +43,7 @@ typedef struct data
 } data_shell;
 
 /**
- * struct sepa_list_s - the single linked list
+ * struct sep_list_s - the single linked list
  * @separator: ; | &
  * @next: next node
  * Description: the single linked list to store separators
@@ -52,7 +52,7 @@ typedef struct sep_list_s
 {
 	char separator;
 	struct sep_list_s *next;
-} sepa_list;
+} sep_list;
 
 /**
  * struct line_list_s - single linked list
@@ -149,8 +149,8 @@ int check_syntax_error(data_shell *datash, char *input);
 
 /* split.c */
 char *swap_char(char *input, int bool);
-void add_nodes(sepa_list **head_s, line_list **head_l, char *input);
-void go_next(sepa_list **list_s, line_list **list_l, data_shell *datash);
+void add_nodes(sep_list **head_s, line_list **head_l, char *input);
+void go_next(sep_list **list_s, line_list **list_l, data_shell *datash);
 int split_commands(data_shell *datash, char *input);
 char **split_line(char *input);
 
