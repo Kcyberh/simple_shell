@@ -48,10 +48,10 @@ typedef struct data
  * @next: next node
  * Description: the single linked list to store separators
  */
-typedef struct sepa_list_s
+typedef struct sep_list_s
 {
 	char separator;
-	struct sepa_list_s *next;
+	struct sep_list_s *next;
 } sepa_list;
 
 /**
@@ -96,8 +96,8 @@ typedef struct r_var_list
 
 
 /* hsh_lists.c  */
-sepa_list *add_sepa_node_end(sepa_list **head, char sepa);
-void free_sepa_list(sepa_list **head);
+sep_list *add_sep_node_end(sep_list **head, char sep);
+void free_sep_list(sep_list **head);
 line_list *add_line_end(line_list **head, char *line);
 void free_line_list(line_list **head);
 
