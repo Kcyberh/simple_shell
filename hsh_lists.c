@@ -1,100 +1,115 @@
 #include "main.h"
 
 /**
- * add_sepa_node_end - add a separator  at the end
+ * add_sepa_node_end - it add a separator  at the end
  * of a sepa_list.
- * @head: head of the linked list.
- * @sepa: separator found (; | &).
- * Return: address of the head.
+ * @head: the head of the linked list.
+ * @sepa: the separator found (; | &).
+ * Return: it returns address of the head.
  */
 
 sepa_list *add_sepa_node_end(sepa_list **head, char sepa)
 {
-sepa_list *new = malloc(sizeof(sepa_list));
-if (new == NULL)
-return (NULL);
+	sepa_list *new, *temp;
 
-new->separator = sepa;
-new->next = NULL;
+	new = malloc(sizeof(sepa_list));
+	if (new == NULL)
+		return (NULL);
 
-if (*head == NULL)
-{
-*head = new;
-}
-else
-{
-sepa_list *current = *head;
-while (current->next != NULL)
-current = current->next;
-current->next = new;
-}
+	new->separator = sepa;
+	new->next = NULL;
+	temp = *head;
 
-return (*head);
+	if (temp == NULL)
+	{
+		*head = new;
+	}
+	else
+	{
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new;
+	}
+
+	return (*head);
 }
 
 /**
- * free_sepa_list - frees a sepa_list
- * @head: head of the linked list.
- * Return: no return.
+ * free_sepa_list - it frees a sepa_list
+ * @head: the head of the linked list.
+ * Return: it  returns nothing.
  */
 void free_sepa_list(sepa_list **head)
 {
-sepa_list *current = head;
-while (current != NULL)
-{
-sepa_list *next = current->next;
-free(current);
-current = next;
-}
+	sepa_list *temp;
+	sepa_list *curr;
+
+	if (head != NULL)
+	{
+		curr = *head;
+		while ((temp = curr) != NULL)
+		{
+			curr = curr->next;
+			free(temp);
+		}
+		*head = NULL;
+	}
 }
 
 
 /**
- * add_line_node_end - adds a command line at the end
+ * add_line_node_end - it adds a command line at the end
  * of a line_list.
- * @head: head of the linked list.
- * @line: command line.
- * Return: address of the head.
+ * @head: the head of the linked list.
+ * @line: the command line.
+ * Return: the address of the head.
  */
 
 line_list *add_line_node_end(line_list **head, char *line)
 {
-line_list *new = malloc(sizeof(line_list));
-if (new == NULL)
-return (NULL);
+	line_list *new, *temp;
 
-new->line = line;
-new->next = NULL;
+	new = malloc(sizeof(line_list));
+	if (new == NULL)
+		return (NULL);
 
-if (*head == NULL)
-{
-*head = new;
-}
-else
-{
-line_list *current = *head;
-while (current->next != NULL)
-current = current->next;
-current->next = new;
-}
+	new->line = line;
+	new->next = NULL;
+	temp = *head;
 
-return (*head);
+	if (temp == NULL)
+	{
+		*head = new;
+	}
+	else
+	{
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new;
+	}
+
+	return (*head);
 }
 
 /**
- * free_line_list - frees a line_list
- * @head: head of the linked list.
- * Return: no return.
+ * free_line_list - it frees a line_list
+ * @head: the head of the linked list.
+ * Return: it return nothing.
  */
 
 void free_line_list(line_list **head)
 {
-line_list *current = head;
-while (current != NULL)
-{
-line_list *next = current->next;
-free(current->line);
-free(current);
-current = next;
-}
+	line_list *temp;
+	line_list *curr;
+
+	if (head != NULL)
+	{
+		curr = *head;
+		while ((temp = curr) != NULL)
+		{
+			curr = curr->next;
+			free(temp);
+		}
+		*head = NULL;
+	}
 }
