@@ -194,7 +194,7 @@ int exit_shell(data_shell *datash);
 
 /* hsh_stdlib.c */
 int get_len(int n);
-char *aux_itoa(int n);
+char *hsh_itoa(int n);
 int _atoi(char *s);
 
 /* hsh_error1.c */
@@ -214,16 +214,16 @@ char *error_path_126(data_shell *datash);
 int get_error(data_shell *datash, int eval);
 
 /* hsh_help.c */
-void aux_help_env(void);
-void aux_help_setenv(void);
-void aux_help_unsetenv(void);
-void aux_help_general(void);
-void aux_help_exit(void);
+void hsh_help_env(void);
+void hsh_help_setenv(void);
+void hsh_help_unsetenv(void);
+void hsh_help_general(void);
+void hsh_help_exit(void);
 
 /* hsh_help2.c */
-void aux_help(void);
-void aux_help_alias(void);
-void aux_help_cd(void);
+void hsh_help(void);
+void hsh_help_alias(void);
+void hsh_help_cd(void);
 
 /* get_help */
 int get_help(data_shell *datash);

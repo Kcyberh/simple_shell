@@ -2,13 +2,14 @@
 
 /**
  * free_data - it frees data structure
- * @datash: data structure
+ * @datash:the  data structure
  * Return: it returns nothing
  */
 
 void free_data(data_shell *datash)
 {
 	unsigned int x;
+
 	for (x = 0; datash->_environ[x]; x++)
 	{
 		free(datash->_environ[x]);
@@ -45,11 +46,11 @@ void set_data(data_shell *datash, char **av)
 	}
 
 	datash->_environ[x] = NULL;
-	datash->pid = aux_itoa(getpid());
+	datash->pid = hsh_itoa(getpid());
 }
 
 /**
- * main - main program
+ * main - the main program
  * @ac: the argument count
  * @av: the argument vector
  * Return: 0 = success
