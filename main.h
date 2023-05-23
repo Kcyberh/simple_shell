@@ -43,16 +43,16 @@ typedef struct data
 } data_shell;
 
 /**
- * struct sep_list_s - the single linked list
+ * struct sepa_list_s - the single linked list
  * @separator: ; | &
  * @next: next node
  * Description: the single linked list to store separators
  */
-typedef struct sep_list_s
+typedef struct sepa_list_s
 {
 	char separator;
-	struct sep_list_s *next;
-} sep_list;
+	struct sepa_list_s *next;
+} sepa_list;
 
 /**
  * struct line_list_s - single linked list
@@ -96,8 +96,8 @@ typedef struct r_var_list
 
 
 /* hsh_lists.c  */
-sep_list *add_sep_node_end(sep_list **head, char sep);
-void free_sep_list(sep_list **head);
+sepa_list *add_sepa_node_end(sepa_list **head, char sepa);
+void free_sepa_list(sepa_list **head);
 line_list *add_line_node_end(line_list **head, char *line);
 void free_line_list(line_list **head);
 
@@ -149,8 +149,8 @@ int check_syntax_error(data_shell *datash, char *input);
 
 /* split.c */
 char *swap_char(char *input, int bool);
-void add_nodes(sep_list **head_s, line_list **head_l, char *input);
-void go_next(sep_list **list_s, line_list **list_l, data_shell *datash);
+void add_nodes(sepa_list **head_s, line_list **head_l, char *input);
+void go_next(sepa_list **list_s, line_list **list_l, data_shell *datash);
 int split_commands(data_shell *datash, char *input);
 char **split_line(char *input);
 

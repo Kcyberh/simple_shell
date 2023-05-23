@@ -1,21 +1,21 @@
 #include "main.h"
 
 /**
- * add_sep_node_end - it adds a separator found at the end
- * of a sep_list.
+ * add_sepa_node_end - it adds a separator found at the end
+ * of a sepa_list.
  * @head: the head of the linked list.
- * @sep: the separator found (; | &).
+ * @sepa: the separator found (; | &).
  * Return: it returns address of the head.
  */
-sep_list *add_sep_node_end(sep_list **head, char sep)
+sepa_list *add_sepa_node_end(sepa_list **head, char sepa)
 {
-	sep_list *new, *temp;
+	sepa_list *new, *temp;
 
-	new = malloc(sizeof(sep_list));
+	new = malloc(sizeof(sepa_list));
 	if (new == NULL)
 		return (NULL);
 
-	new->separator = sep;
+	new->separator = sepa;
 	new->next = NULL;
 	temp = *head;
 
@@ -34,14 +34,14 @@ sep_list *add_sep_node_end(sep_list **head, char sep)
 }
 
 /**
- * free_sep_list - it frees a sep_list
+ * free_sepa_list - it frees a sepa_list
  * @head: the head of the linked list.
  * Return: it returns nothing.
  */
-void free_sep_list(sep_list **head)
+void free_sepa_list(sepa_list **head)
 {
-	sep_list *temp;
-	sep_list *curr;
+	sepa_list *temp;
+	sepa_list *curr;
 
 	if (head != NULL)
 	{

@@ -49,7 +49,7 @@ char *swap_char(char *input, int bool)
  * @input: the input string
  * Return: it returns nothing
  */
-void add_nodes(sep_list **head_s, line_list **head_l, char *input)
+void add_nodes(sepa_list **head_s, line_list **head_l, char *input)
 {
 	int x;
 	char *line;
@@ -59,11 +59,11 @@ void add_nodes(sep_list **head_s, line_list **head_l, char *input)
 	for (x = 0; input[x]; x++)
 	{
 		if (input[x] == ';')
-			add_sep_node_end(head_s, input[x]);
+			add_sepa_node_end(head_s, input[x]);
 
 		if (input[x] == '|' || input[x] == '&')
 		{
-			add_sep_node_end(head_s, input[x]);
+			add_sepa_node_end(head_s, input[x]);
 			x++;
 		}
 	}
@@ -84,33 +84,33 @@ void add_nodes(sep_list **head_s, line_list **head_l, char *input)
  * @datash: the data structure
  * Return: it returns nothing
  */
-void go_next(sep_list **list_s, line_list **list_l, data_shell *datash)
+void go_next(sepa_list **list_s, line_list **list_l, data_shell *datash)
 {
-	int loop_sep;
-	sep_list *ls_s;
+	int loop_sepa;
+	sepa_list *ls_s;
 	line_list *ls_l;
 
-	loop_sep = 1;
+	loop_sepa = 1;
 	ls_s = *list_s;
 	ls_l = *list_l;
 
-	while (ls_s != NULL && loop_sep)
+	while (ls_s != NULL && loop_sepa)
 	{
 		if (datash->status == 0)
 		{
 			if (ls_s->separator == '&' || ls_s->separator == ';')
-				loop_sep = 0;
+				loop_sepa = 0;
 			if (ls_s->separator == '|')
 				ls_l = ls_l->next, ls_s = ls_s->next;
 		}
 		else
 		{
 			if (ls_s->separator == '|' || ls_s->separator == ';')
-				loop_sep = 0;
+				loop_sepa = 0;
 			if (ls_s->separator == '&')
 				ls_l = ls_l->next, ls_s = ls_s->next;
 		}
-		if (ls_s != NULL && !loop_sep)
+		if (ls_s != NULL && !loop_sepa)
 			ls_s = ls_s->next;
 	}
 
@@ -128,7 +128,7 @@ void go_next(sep_list **list_s, line_list **list_l, data_shell *datash)
 int split_commands(data_shell *datash, char *input)
 {
 
-	sep_list *head_s, *list_s;
+	sepa_list *head_s, *list_s;
 	line_list *head_l, *list_l;
 	int loop;
 
@@ -156,7 +156,7 @@ int split_commands(data_shell *datash, char *input)
 			list_l = list_l->next;
 	}
 
-	free_sep_list(&head_s);
+	free_sepa_list(&head_s);
 	free_line_list(&head_l);
 
 	if (loop == 0)
